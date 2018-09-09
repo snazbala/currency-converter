@@ -1,19 +1,11 @@
 export default (state = {}, action) => {
     switch (action.type) {
-        case 'EUR_RATE':
+        case 'CURRENCIES':
             return {
                 ...state,
-                euro: action.payload,
-            }
-        case 'CAD_RATE':
-            return {
-                ...state,
-                canadianDollar: action.payload,
-            }
-        case 'GBP_RATE':
-            return {
-                ...state,
-                pound: action.payload,
+                euro: action.payload.euro,
+                canadianDollar: action.payload.canadianDollar,
+                pound: action.payload.pound,
             }
     default:
         return state

@@ -20,7 +20,6 @@ const CURRENCIES = [
   }
 ];
 
-// this gets re-rendered every time a new currency rate is added :(
 const getCurrencyComponents = (currencies) => (amount, currencyRates, children) => {
   const currencyComponents = currencies.map(({currencyName, displayName}) => (
       <Currency
@@ -41,19 +40,13 @@ const getCurrencyComponents = (currencies) => (amount, currencyRates, children) 
 
 
 class App extends Component {
-  // pass in the function as a function, not a function call. Let
-  // Amount.js do the calling.
-  constructor(props) {
-    super(props);
-    this.state = {
-      prefix: 'converts to',
-    };
-  }
 
   componentDidMount() {
     this.props.initializeCurrencyRates();
   }
 
+  // pass in the function as a curried function. Let
+  // Amount.js do the second call with the next arguments.
   render() {
     return (
       <div className="App">
